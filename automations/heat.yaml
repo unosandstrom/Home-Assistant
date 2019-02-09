@@ -1,0 +1,1196 @@
+
+
+#********************************************
+#BOOST TILL
+#********************************************
+
+   - alias: 'BOOST ON alla'
+     trigger:
+       platform: state
+       entity_id: input_boolean.boost_alla
+       to: 'on'
+     action:
+       - service: input_boolean.turn_on
+         entity_id: input_boolean.boost_v_ovre
+       - service: input_boolean.turn_on
+         entity_id: input_boolean.boost_v_nedre
+       - service: input_boolean.turn_on
+         entity_id: input_boolean.boost_gille
+       - service: input_boolean.turn_on         
+         entity_id: input_boolean.boost_matrum
+       - service: input_boolean.turn_on  
+         entity_id: input_boolean.boost_kok
+       - service: input_boolean.turn_on  
+         entity_id: input_boolean.boost_sovrum
+       - service: input_boolean.turn_on  
+         entity_id: input_boolean.boost_gastrum
+       - service: input_boolean.turn_on  
+         entity_id: input_boolean.boost_arbetsrum
+       - service: input_boolean.turn_on  
+         entity_id: input_boolean.boost_hall
+       - service: input_boolean.turn_on  
+         entity_id: input_boolean.boost_ovre_hall
+       - service: input_boolean.turn_on  
+         entity_id: input_boolean.boost_ovre_toalett
+#       - service: input_boolean.turn_on  
+#         entity_id: input_boolean.boost_garage
+
+   - alias: 'BOOST ON vardagsrum övre'
+     trigger:
+       platform: state
+       entity_id: input_boolean.boost_v_ovre
+       to: 'on'
+     action:
+       - service: climate.set_temperature
+         data:
+           entity_id: climate.danfoss_z_thermostat_014g0013_heating_1_2
+           temperature: 28
+
+   - alias: 'BOOST ON vardagsrum nedre'
+     trigger:
+       platform: state
+       entity_id: input_boolean.boost_v_nedre
+       to: 'on'
+     action:
+       - service: climate.set_temperature
+         data:
+           entity_id: climate.danfoss_z_thermostat_014g0013_heating_1_3
+           temperature: 28
+
+   - alias: 'BOOST ON gillestuga'
+     trigger:
+       platform: state
+       entity_id: input_boolean.boost_gille
+       to: 'on'
+
+     action:
+       - service: climate.set_temperature
+         data:
+           entity_id: climate.danfoss_z_thermostat_014g0013_heating_1_9
+           temperature: 28
+
+   - alias: 'BOOST ON matrum'
+     trigger:
+       platform: state
+       entity_id: input_boolean.boost_matrum
+       to: 'on'
+     action:
+       - service: climate.set_temperature
+         data:
+           entity_id: climate.danfoss_z_thermostat_014g0013_heating_1
+           temperature: 28
+
+   - alias: 'BOOST ON kök'
+     trigger:
+       platform: state
+       entity_id: input_boolean.boost_kok
+       to: 'on'
+     action:
+       - service: climate.set_temperature
+         data:
+           entity_id: climate.danfoss_z_thermostat_014g0013_heating_1_11
+           temperature: 28
+
+   - alias: 'BOOST ON sovrum'
+     trigger:
+       platform: state
+       entity_id: input_boolean.boost_sovrum
+       to: 'on'
+     action:
+       - service: climate.set_temperature
+         data:
+           entity_id: climate.danfoss_z_thermostat_014g0013_heating_1_7
+           temperature: 28
+
+   - alias: 'BOOST ON gästrum'
+     trigger:
+       platform: state
+       entity_id: input_boolean.boost_gastrum
+       to: 'on'
+     action:
+       - service: climate.set_temperature
+         data:
+           entity_id: climate.danfoss_z_thermostat_014g0013_heating_1_6
+           temperature: 28
+
+   - alias: 'BOOST ON arbetsrum'
+     trigger:
+       platform: state
+       entity_id: input_boolean.boost_arbetsrum
+       to: 'on'
+     action:
+       - service: climate.set_temperature
+         data:
+           entity_id: climate.danfoss_z_thermostat_014g0013_heating_1_8
+           temperature: 28
+
+   - alias: 'BOOST ON hall'
+     trigger:
+       platform: state
+       entity_id: input_boolean.boost_hall
+       to: 'on'
+     action:
+       - service: climate.set_temperature
+         data:
+           entity_id: climate.danfoss_z_thermostat_014g0013_heating_1_5
+           temperature: 28
+
+   - alias: 'BOOST ON övre hall'
+     trigger:
+       platform: state
+       entity_id: input_boolean.boost_ovre_hall
+       to: 'on'
+     action:
+       - service: climate.set_temperature
+         data:
+           entity_id: climate.danfoss_z_thermostat_014g0013_heating_1_4
+           temperature: 28
+
+   - alias: 'BOOST ON övre toalett'
+     trigger:
+       platform: state
+       entity_id: input_boolean.boost_ovre_toalett
+       to: 'on'
+     action:
+       - service: climate.set_temperature
+         data:
+           entity_id: climate.danfoss_z_thermostat_014g0013_heating_1_10
+           temperature: 28
+
+   - alias: 'BOOST ON garage'
+     trigger:
+       platform: state
+       entity_id: input_boolean.boost_garage
+       to: 'on'
+     action:
+       - service: climate.set_temperature
+         data:
+           entity_id: climate.danfoss_z_thermostat_014g0013_heating_1_12
+           temperature: 28
+
+
+
+#********************************************
+#BOOST AV
+#********************************************
+   - alias: 'BOOST OFF vardagsrum övre'
+     trigger:
+       platform: state
+       entity_id: input_boolean.boost_v_ovre
+       to: 'on'
+       for:
+          hours: 0
+          minutes: 15
+          seconds: 0
+     action:
+       - service: input_boolean.turn_off
+         entity_id: input_boolean.boost_v_ovre
+       - service: input_boolean.turn_off
+         entity_id: input_boolean.dag_v_ovre
+       - service: input_boolean.turn_on
+         entity_id: input_boolean.dag_v_ovre
+      
+   - alias: 'BOOST OFF vardagsrum nedre'
+     trigger:
+       platform: state
+       entity_id: input_boolean.boost_v_nedre
+       to: 'on'
+       for:
+          hours: 0
+          minutes: 15
+          seconds: 0
+     action:
+       - service: input_boolean.turn_off
+         entity_id: input_boolean.boost_v_nedre
+       - service: input_boolean.turn_off
+         entity_id: input_boolean.dag_v_nedre
+       - service: input_boolean.turn_on
+         entity_id: input_boolean.dag_v_nedre
+
+   - alias: 'BOOST OFF vardagsrum gillestuga'
+     trigger:
+       platform: state
+       entity_id: input_boolean.boost_gille
+       to: 'on'
+       for:
+          hours: 0
+          minutes: 15
+          seconds: 0
+     action:
+       - service: input_boolean.turn_off
+         entity_id: input_boolean.boost_gille
+       - service: input_boolean.turn_off
+         entity_id: input_boolean.dag_gille
+       - service: input_boolean.turn_on
+         entity_id: input_boolean.dag_gille
+
+   - alias: 'BOOST OFF matrum'
+     trigger:
+       platform: state
+       entity_id: input_boolean.boost_matrum
+       to: 'on'
+       for:
+          hours: 0
+          minutes: 15
+          seconds: 0
+     action:
+       - service: input_boolean.turn_off
+         entity_id: input_boolean.boost_matrum
+       - service: input_boolean.turn_off
+         entity_id: input_boolean.dag_matrum
+       - service: input_boolean.turn_on
+         entity_id: input_boolean.dag_matrum
+
+   - alias: 'BOOST OFF kök'
+     trigger:
+       platform: state
+       entity_id: input_boolean.boost_kok
+       to: 'on'
+       for:
+          hours: 0
+          minutes: 15
+          seconds: 0
+     action:
+       - service: input_boolean.turn_off
+         entity_id: input_boolean.boost_kok
+       - service: input_boolean.turn_off
+         entity_id: input_boolean.dag_kok
+       - service: input_boolean.turn_on
+         entity_id: input_boolean.dag_kok
+
+   - alias: 'BOOST OFF sovrum'
+     trigger:
+       platform: state
+       entity_id: input_boolean.boost_sovrum
+       to: 'on'
+       for:
+          hours: 0
+          minutes: 15
+          seconds: 0
+     action:
+       - service: input_boolean.turn_off
+         entity_id: input_boolean.boost_sovrum
+       - service: input_boolean.turn_off
+         entity_id: input_boolean.dag_sovrum
+       - service: input_boolean.turn_on
+         entity_id: input_boolean.dag_sovrum
+
+   - alias: 'BOOST OFF gästrum'
+     trigger:
+       platform: state
+       entity_id: input_boolean.boost_gastrum
+       to: 'on'
+       for:
+          hours: 0
+          minutes: 15
+          seconds: 0
+     action:
+       - service: input_boolean.turn_off
+         entity_id: input_boolean.boost_gastrum
+       - service: input_boolean.turn_off
+         entity_id: input_boolean.dag_gastrum
+       - service: input_boolean.turn_on
+         entity_id: input_boolean.dag_gastrum
+
+   - alias: 'BOOST OFF arbetsrum'
+     trigger:
+       platform: state
+       entity_id: input_boolean.boost_arbetsrum
+       to: 'on'
+       for:
+          hours: 0
+          minutes: 15
+          seconds: 0
+     action:
+       - service: input_boolean.turn_off
+         entity_id: input_boolean.boost_arbetsrum
+       - service: input_boolean.turn_off
+         entity_id: input_boolean.dag_arbetsrum
+       - service: input_boolean.turn_on
+         entity_id: input_boolean.dag_arbetsrum
+
+   - alias: 'BOOST OFF hall'
+     trigger:
+       platform: state
+       entity_id: input_boolean.boost_hall
+       to: 'on'
+       for:
+          hours: 0
+          minutes: 15
+          seconds: 0
+     action:
+       - service: input_boolean.turn_off
+         entity_id: input_boolean.boost_hall
+       - service: input_boolean.turn_off
+         entity_id: input_boolean.dag_hall
+       - service: input_boolean.turn_on
+         entity_id: input_boolean.dag_hall
+
+   - alias: 'BOOST OFF övre hall'
+     trigger:
+       platform: state
+       entity_id: input_boolean.boost_ovre_hall
+       to: 'on'
+       for:
+          hours: 0
+          minutes: 15
+          seconds: 0
+     action:
+       - service: input_boolean.turn_off
+         entity_id: input_boolean.boost_ovre_hall
+       - service: input_boolean.turn_off
+         entity_id: input_boolean.dag_ovre_hall
+       - service: input_boolean.turn_on
+         entity_id: input_boolean.dag_ovre_hall
+
+   - alias: 'BOOST OFF övre toalett'
+     trigger:
+       platform: state
+       entity_id: input_boolean.boost_ovre_toalett
+       to: 'on'
+       for:
+          hours: 0
+          minutes: 15
+          seconds: 0
+     action:
+       - service: input_boolean.turn_off
+         entity_id: input_boolean.boost_ovre_toalett
+       - service: input_boolean.turn_off
+         entity_id: input_boolean.dag_ovre_toalett
+       - service: input_boolean.turn_on
+         entity_id: input_boolean.dag_ovre_toalett
+
+   - alias: 'BOOST OFF garage'
+     trigger:
+       platform: state
+       entity_id: input_boolean.boost_garage
+       to: 'on'
+       for:
+          hours: 0
+          minutes: 15
+          seconds: 0
+     action:
+       - service: input_boolean.turn_off
+         entity_id: input_boolean.boost_garage
+       - service: input_boolean.turn_off
+         entity_id: input_boolean.dag_garage
+       - service: input_boolean.turn_on
+         entity_id: input_boolean.dag_garage
+
+
+      
+#******************************************************************
+#TIDSTYRNING TILL - FRÅN
+#******************************************************************
+
+   - alias: 'TIDSTYRNING AV ALLA'
+     trigger:
+       platform: state
+       entity_id: input_boolean.tidstyrning_alla
+       to: 'on'
+     action:
+       - service: input_boolean.turn_on
+         entity_id: input_boolean.tidstyrning_v_ovre
+       - service: input_boolean.turn_on
+         entity_id: input_boolean.tidstyrning_v_nedre
+       - service: input_boolean.turn_on
+         entity_id: input_boolean.tidstyrning_gille
+       - service: input_boolean.turn_on         
+         entity_id: input_boolean.tidstyrning_matrum
+       - service: input_boolean.turn_on  
+         entity_id: input_boolean.tidstyrning_kok
+       - service: input_boolean.turn_on  
+         entity_id: input_boolean.tidstyrning_sovrum
+       - service: input_boolean.turn_on  
+         entity_id: input_boolean.tidstyrning_gastrum
+       - service: input_boolean.turn_on  
+         entity_id: input_boolean.tidstyrning_arbetsrum
+       - service: input_boolean.turn_on  
+         entity_id: input_boolean.tidstyrning_hall
+       - service: input_boolean.turn_on  
+         entity_id: input_boolean.tidstyrning_ovre_hall
+       - service: input_boolean.turn_on  
+         entity_id: input_boolean.tidstyrning_ovre_toalett
+       - service: input_boolean.turn_on  
+         entity_id: input_boolean.tidstyrning_garage
+
+   - alias: 'TIDSTYRNING TILL ALLA'
+     trigger:
+       platform: state
+       entity_id: input_boolean.tidstyrning_alla
+       to: 'off'
+     action:
+       - service: input_boolean.turn_off
+         entity_id: input_boolean.tidstyrning_v_ovre
+       - service: input_boolean.turn_off
+         entity_id: input_boolean.tidstyrning_v_nedre
+       - service: input_boolean.turn_off
+         entity_id: input_boolean.tidstyrning_gille
+       - service: input_boolean.turn_off         
+         entity_id: input_boolean.tidstyrning_matrum
+       - service: input_boolean.turn_off  
+         entity_id: input_boolean.tidstyrning_kok
+       - service: input_boolean.turn_off  
+         entity_id: input_boolean.tidstyrning_sovrum
+       - service: input_boolean.turn_off  
+         entity_id: input_boolean.tidstyrning_gastrum
+       - service: input_boolean.turn_off  
+         entity_id: input_boolean.tidstyrning_arbetsrum
+       - service: input_boolean.turn_off  
+         entity_id: input_boolean.tidstyrning_hall
+       - service: input_boolean.turn_off  
+         entity_id: input_boolean.tidstyrning_ovre_hall
+       - service: input_boolean.turn_off  
+         entity_id: input_boolean.tidstyrning_ovre_toalett
+       - service: input_boolean.turn_off  
+         entity_id: input_boolean.tidstyrning_garage
+
+
+#******************************************************************
+#TIDSTYRNING
+#******************************************************************
+
+   - alias: 'Alla dag'
+     trigger:
+       platform: state
+       entity_id: input_boolean.dag_alla
+       to: 'on'
+     action:
+       - service: homeassistant.turn_on
+         entity_id: input_boolean.dag_v_ovre
+       - service: input_boolean.turn_on
+         entity_id: input_boolean.dag_v_nedre
+       - service: input_boolean.turn_on
+         entity_id: input_boolean.dag_gille
+       - service: input_boolean.turn_on         
+         entity_id: input_boolean.dag_matrum
+       - service: input_boolean.turn_on  
+         entity_id: input_boolean.dag_kok
+       - service: input_boolean.turn_on  
+         entity_id: input_boolean.dag_sovrum
+       - service: input_boolean.turn_on  
+         entity_id: input_boolean.dag_gastrum
+       - service: input_boolean.turn_on  
+         entity_id: input_boolean.dag_arbetsrum
+       - service: input_boolean.turn_on  
+         entity_id: input_boolean.dag_hall
+       - service: input_boolean.turn_on  
+         entity_id: input_boolean.dag_ovre_hall
+       - service: input_boolean.turn_on  
+         entity_id: input_boolean.dag_ovre_toalett
+       - service: input_boolean.turn_on  
+         entity_id: input_boolean.dag_garage
+
+   - alias: 'Alla natt'
+     trigger:
+       platform: state
+       entity_id: input_boolean.dag_alla
+       to: 'off'
+     action:
+       - service: homeassistant.turn_off
+         entity_id: input_boolean.dag_v_ovre
+       - service: input_boolean.turn_off
+         entity_id: input_boolean.dag_v_nedre
+       - service: input_boolean.turn_off
+         entity_id: input_boolean.dag_gille
+       - service: input_boolean.turn_off         
+         entity_id: input_boolean.dag_matrum
+       - service: input_boolean.turn_off  
+         entity_id: input_boolean.dag_kok
+       - service: input_boolean.turn_off  
+         entity_id: input_boolean.dag_sovrum
+       - service: input_boolean.turn_off  
+         entity_id: input_boolean.dag_gastrum
+       - service: input_boolean.turn_off  
+         entity_id: input_boolean.dag_arbetsrum
+       - service: input_boolean.turn_off  
+         entity_id: input_boolean.dag_hall
+       - service: input_boolean.turn_off  
+         entity_id: input_boolean.dag_ovre_hall
+       - service: input_boolean.turn_off  
+         entity_id: input_boolean.dag_ovre_toalett
+       - service: input_boolean.turn_off  
+         entity_id: input_boolean.dag_garage
+
+
+   - alias: 'DAG TIDSSTYRD vardagsrum övre'
+     trigger:
+       platform: time
+       at: '05:00:00'
+     condition:
+       condition: state
+       entity_id: input_boolean.tidstyrning_v_ovre
+       state: 'on'
+     action:
+       service: homeassistant.turn_on
+       entity_id: input_boolean.dag_v_ovre
+
+   - alias: 'NATT TIDSSTYRD vardagsrum övre'
+     trigger:
+       platform: time
+       at: '23:00:00'
+     condition:
+       condition: state
+       entity_id: input_boolean.tidstyrning_v_ovre
+       state: 'on'
+     action:
+       service: homeassistant.turn_off
+       entity_id: input_boolean.dag_v_ovre
+
+
+   - alias: 'DAG TIDSSTYRD vardagsrum nedre'
+     trigger:
+       platform: time
+       at: '15:00:00'
+     condition:
+       condition: state
+       entity_id: input_boolean.tidstyrning_v_nedre
+       state: 'on'
+     action:
+       service: homeassistant.turn_on
+       entity_id: input_boolean.dag_v_nedre
+
+   - alias: 'NATT TIDSSTYRD vardagsrum nedre'
+     trigger:
+       platform: time
+       at: '22:00:00'
+     condition:
+       condition: state
+       entity_id: input_boolean.tidstyrning_v_nedre
+       state: 'on'
+     action:
+       service: homeassistant.turn_off
+       entity_id: input_boolean.dag_v_nedre
+
+
+#   - alias: 'DAG TIDSSTYRD gillestuga'
+#     trigger:
+#       platform: time
+#       at: '16:00:00'
+#     condition:
+#       condition: and
+#       conditions:
+#         - condition: time
+#           weekday:
+#             - fri
+#             - sat
+#             - sun
+#         - condition: state
+#           entity_id: input_boolean.tidstyrning_gille 
+#           state: 'on'
+#     action:
+#       service: homeassistant.turn_on
+#       entity_id: input_boolean.dag_gille
+
+   - alias: 'NATT TIDSSTYRD gillestuga'
+     trigger:
+       platform: time
+       at: '20:00:00'
+     condition:
+       condition: state
+       entity_id: input_boolean.tidstyrning_gille
+       state: 'on'
+     action:
+       service: homeassistant.turn_off
+       entity_id: input_boolean.dag_gille
+
+
+   - alias: 'DAG TIDSSTYRD matrum'
+     trigger:
+       platform: time
+       at: '06:00:00'
+     condition:
+       condition: state
+       entity_id: input_boolean.tidstyrning_matrum
+       state: 'on'
+     action:
+       service: homeassistant.turn_on
+       entity_id: input_boolean.dag_matrum
+
+   - alias: 'NATT TIDSSTYRD matrum'
+     trigger:
+       platform: time
+       at: '18:00:00'
+     condition:
+       condition: state
+       entity_id: input_boolean.tidstyrning_matrum
+       state: 'on'
+     action:
+       service: homeassistant.turn_off
+       entity_id: input_boolean.dag_matrum
+
+   - alias: 'DAG TIDSSTYRD kök'
+     trigger:
+       platform: time
+       at: '06:00:00'
+     condition:
+       condition: state
+       entity_id: input_boolean.tidstyrning_kok
+       state: 'on'
+     action:
+       service: homeassistant.turn_on
+       entity_id: input_boolean.dag_kok
+
+   - alias: 'NATT TIDSSTYRD kök'
+     trigger:
+       platform: time
+       at: '18:00:00'
+     condition:
+       condition: state
+       entity_id: input_boolean.tidstyrning_kok
+       state: 'on'
+     action:
+       service: homeassistant.turn_off
+       entity_id: input_boolean.dag_kok
+
+   - alias: 'DAG TIDSSTYRD sovrum'
+     trigger:
+       platform: time
+       at: '22:00:00'
+     condition:
+       condition: state
+       entity_id: input_boolean.tidstyrning_sovrum
+       state: 'on'
+     action:
+       service: homeassistant.turn_on
+       entity_id: input_boolean.dag_sovrum
+
+   - alias: 'NATT TIDSSTYRD sovrum'
+     trigger:
+       platform: time
+       at: '23:59:00'
+     condition:
+       condition: state
+       entity_id: input_boolean.tidstyrning_sovrum
+       state: 'on'
+     action:
+       service: homeassistant.turn_off
+       entity_id: input_boolean.dag_sovrum
+
+#   - alias: 'DAG TIDSSTYRD gästrum'
+#     trigger:
+#       platform: time
+#       at: '20:00:00'
+#     condition:
+#       condition: state
+#       entity_id: input_boolean.dag_tidstyrning
+#       state: 'on'
+#     action:
+#       service: homeassistant.turn_on
+#       entity_id: input_boolean.dag_gastrum
+
+   - alias: 'NATT TIDSSTYRD gästrum'
+     trigger:
+       platform: time
+       at: '21:00:00'
+     condition:
+       condition: state
+       entity_id: input_boolean.tidstyrning_gastrum
+       state: 'on'
+     action:
+       service: homeassistant.turn_off
+       entity_id: input_boolean.dag_gastrum
+
+   - alias: 'DAG TIDSSTYRD arbetsrum'
+     trigger:
+       platform: time
+       at: '06:00:00'
+     condition:
+       condition: state
+       entity_id: input_boolean.tidstyrning_arbetsrum
+       state: 'on'
+     action:
+       service: homeassistant.turn_on
+       entity_id: input_boolean.dag_arbetsrum
+
+   - alias: 'NATT TIDSSTYRD arbetsrum'
+     trigger:
+       platform: time
+       at: '21:00:00'
+     condition:
+       condition: state
+       entity_id: input_boolean.tidstyrning_arbetsrum
+       state: 'on'
+     action:
+       service: homeassistant.turn_off
+       entity_id: input_boolean.dag_arbetsrum
+
+   - alias: 'DAG TIDSSTYRD hall'
+     trigger:
+       platform: time
+       at: '06:00:00'
+     condition:
+       condition: state
+       entity_id: input_boolean.tidstyrning_hall
+       state: 'on'
+     action:
+       service: homeassistant.turn_on
+       entity_id: input_boolean.dag_hall
+
+   - alias: 'NATT TIDSSTYRD hall'
+     trigger:
+       platform: time
+       at: '18:00:00'
+     condition:
+       condition: state
+       entity_id: input_boolean.tidstyrning_hall
+       state: 'on'
+     action:
+       service: homeassistant.turn_off
+       entity_id: input_boolean.dag_hall
+
+   - alias: 'DAG TIDSSTYRD ovre_hall'
+     trigger:
+       platform: time
+       at: '06:00:00'
+     condition:
+       condition: state
+       entity_id: input_boolean.tidstyrning_ovre_hall
+       state: 'on'
+     action:
+       service: homeassistant.turn_on
+       entity_id: input_boolean.dag_ovre_hall
+
+   - alias: 'NATT TIDSSTYRD övre hall'
+     trigger:
+       platform: time
+       at: '18:00:00'
+     condition:
+       condition: state
+       entity_id: input_boolean.tidstyrning_ovre_hall
+       state: 'on'
+     action:
+       service: homeassistant.turn_off
+       entity_id: input_boolean.dag_ovre_hall
+
+   - alias: 'DAG TIDSSTYRD övre toalett'
+     trigger:
+       platform: time
+       at: '07:00:00'
+     condition:
+       condition: state
+       entity_id: input_boolean.tidstyrning_ovre_toalett
+       state: 'on'
+     action:
+       service: homeassistant.turn_on
+       entity_id: input_boolean.dag_ovre_toalett
+
+   - alias: 'NATT TIDSSTYRD övre toalett'
+     trigger:
+       platform: time
+       at: '21:00:00'
+     condition:
+       condition: state
+       entity_id: input_boolean.tidstyrning_ovre_toalett
+       state: 'on'
+     action:
+       service: homeassistant.turn_off
+       entity_id: input_boolean.dag_ovre_toalett
+
+
+#   - alias: 'DAG TIDSSTYRD garage'
+#     trigger:
+#       platform: time
+#       at: '06:00:00'
+#     condition:
+#       condition: state
+#       entity_id: input_boolean.tidstyrning_garage
+#       state: 'on'
+#     action:
+#       service: homeassistant.turn_on
+#       entity_id: input_boolean.dag_garage
+
+   - alias: 'NATT TIDSSTYRD garage'
+     trigger:
+       platform: time
+       at: '18:00:00'
+     condition:
+       condition: state
+       entity_id: input_boolean.tidstyrning_garage
+       state: 'on'
+     action:
+       service: homeassistant.turn_off
+       entity_id: input_boolean.dag_garage
+
+
+
+#******************************************************************
+#VERKSTÄLL DAGTEMPERATURER
+#******************************************************************
+   - alias: 'SET DAG vardagsrum övre'
+     trigger:
+       platform: state
+       entity_id: input_boolean.dag_v_ovre
+       to: 'on'
+     action:
+       - service: climate.set_temperature
+         data:
+           entity_id: climate.danfoss_z_thermostat_014g0013_heating_1_2
+           temperature: 22
+ 
+   - alias: 'SET DAG vardagsrum nedre'
+     trigger:
+       platform: state
+       entity_id: input_boolean.dag_v_nedre
+       to: 'on'
+     action:
+       - service: climate.set_temperature
+         data:
+           entity_id: climate.danfoss_z_thermostat_014g0013_heating_1_3
+           temperature: 21
+
+   - alias: 'SET DAG gillestuga'
+     trigger:
+       platform: state
+       entity_id: input_boolean.dag_gille
+       to: 'on'
+     action:
+       - service: climate.set_temperature
+         data:
+           entity_id: climate.danfoss_z_thermostat_014g0013_heating_1_9
+           temperature: 18
+
+   - alias: 'SET DAG matrum'
+     trigger:
+       platform: state
+       entity_id: input_boolean.dag_matrum
+       to: 'on'
+     action:
+       - service: climate.set_temperature
+         data:
+           entity_id: climate.danfoss_z_thermostat_014g0013_heating_1
+           temperature: 21
+
+   - alias: 'SET DAG kök'
+     trigger:
+       platform: state
+       entity_id: input_boolean.dag_kok
+       to: 'on'
+     action:
+       - service: climate.set_temperature
+         data:
+           entity_id: climate.danfoss_z_thermostat_014g0013_heating_1_11
+           temperature: 21
+
+   - alias: 'SET DAG sovrum'
+     trigger:
+       platform: state
+       entity_id: input_boolean.dag_sovrum
+       to: 'on'
+     action:
+       - service: climate.set_temperature
+         data:
+           entity_id: climate.danfoss_z_thermostat_014g0013_heating_1_7
+           temperature: 20
+
+   - alias: 'SET DAG gästrum'
+     trigger:
+       platform: state
+       entity_id: input_boolean.dag_gastrum
+       to: 'on'
+     action:
+       - service: climate.set_temperature
+         data:
+           entity_id: climate.danfoss_z_thermostat_014g0013_heating_1_6
+           temperature: 20
+
+   - alias: 'SET DAG arbetsrum'
+     trigger:
+       platform: state
+       entity_id: input_boolean.dag_arbetsrum
+       to: 'on'
+     action:
+       - service: climate.set_temperature
+         data:
+           entity_id: climate.danfoss_z_thermostat_014g0013_heating_1_8
+           temperature: 20
+
+   - alias: 'SET DAG hall'
+     trigger:
+       platform: state
+       entity_id: input_boolean.dag_hall
+       to: 'on'
+     action:
+       - service: climate.set_temperature
+         data:
+           entity_id: climate.danfoss_z_thermostat_014g0013_heating_1_5
+           temperature: 20
+
+   - alias: 'SET DAG övre hall'
+     trigger:
+       platform: state
+       entity_id: input_boolean.dag_ovre_hall
+       to: 'on'
+     action:
+       - service: climate.set_temperature
+         data:
+           entity_id: climate.danfoss_z_thermostat_014g0013_heating_1_4
+           temperature: 20
+
+   - alias: 'SET DAG Övre toalett'
+     trigger:
+       platform: state
+       entity_id: input_boolean.dag_ovre_toalett
+       to: 'on'
+     action:
+       - service: climate.set_temperature
+         data:
+           entity_id: climate.danfoss_z_thermostat_014g0013_heating_1_10
+           temperature: 20
+
+   - alias: 'SET DAG garage'
+     trigger:
+       platform: state
+       entity_id: input_boolean.dag_garage
+       to: 'on'
+     action:
+       - service: climate.set_temperature
+         data:
+           entity_id: climate.danfoss_z_thermostat_014g0013_heating_1_12
+           temperature: 12
+
+
+#******************************************************************
+#VERKSTÄLL NATTTEMPERATURER
+#******************************************************************
+   - alias: 'SET NATT vardagsrum övre'
+     trigger:
+       platform: state
+       entity_id: input_boolean.dag_v_ovre
+       to: 'off'
+     action:
+       - service: climate.set_temperature
+         data:
+           entity_id: climate.danfoss_z_thermostat_014g0013_heating_1_2
+           temperature: 18
+
+   - alias: 'SET NATT vardagsrum nedre'
+     trigger:
+       platform: state
+       entity_id: input_boolean.dag_v_nedre
+       to: 'off'
+     action:
+       - service: climate.set_temperature
+         data:
+           entity_id: climate.danfoss_z_thermostat_014g0013_heating_1_3
+           temperature: 18
+
+   - alias: 'SET NATT gillestuga'
+     trigger:
+       platform: state
+       entity_id: input_boolean.dag_gille
+       to: 'off'
+     action:
+       - service: climate.set_temperature
+         data:
+           entity_id: climate.danfoss_z_thermostat_014g0013_heating_1_9
+           temperature: 16
+
+   - alias: 'SET NATT matrum'
+     trigger:
+       platform: state
+       entity_id: input_boolean.dag_matrum
+       to: 'off'
+     action:
+       - service: climate.set_temperature
+         data:
+           entity_id: climate.danfoss_z_thermostat_014g0013_heating_1
+           temperature: 18
+
+   - alias: 'SET NATT kök'
+     trigger:
+       platform: state
+       entity_id: input_boolean.dag_kok
+       to: 'off'
+     action:
+       - service: climate.set_temperature
+         data:
+           entity_id: climate.danfoss_z_thermostat_014g0013_heating_1_11
+           temperature: 18
+
+   - alias: 'SET NATT sovrum'
+     trigger:
+       platform: state
+       entity_id: input_boolean.dag_sovrum
+       to: 'off'
+     action:
+       - service: climate.set_temperature
+         data:
+           entity_id: climate.danfoss_z_thermostat_014g0013_heating_1_7
+           temperature: 18
+
+   - alias: 'SET NATT gästrum'
+     trigger:
+       platform: state
+       entity_id: input_boolean.dag_gastrum
+       to: 'off'
+     action:
+       - service: climate.set_temperature
+         data:
+           entity_id: climate.danfoss_z_thermostat_014g0013_heating_1_6
+           temperature: 16
+
+   - alias: 'SET NATT arbetsrum'
+     trigger:
+       platform: state
+       entity_id: input_boolean.dag_arbetsrum
+       to: 'off'
+     action:
+       - service: climate.set_temperature
+         data:
+           entity_id: climate.danfoss_z_thermostat_014g0013_heating_1_8
+           temperature: 16
+
+   - alias: 'SET NATT hall'
+     trigger:
+       platform: state
+       entity_id: input_boolean.dag_hall
+       to: 'off'
+     action:
+       - service: climate.set_temperature
+         data:
+           entity_id: climate.danfoss_z_thermostat_014g0013_heating_1_5
+           temperature: 16
+
+   - alias: 'SET NATT övre hall'
+     trigger:
+       platform: state
+       entity_id: input_boolean.dag_ovre_hall
+       to: 'off'
+     action:
+       - service: climate.set_temperature
+         data:
+           entity_id: climate.danfoss_z_thermostat_014g0013_heating_1_4
+           temperature: 16
+
+   - alias: 'SET NATT övre toalett'
+     trigger:
+       platform: state
+       entity_id: input_boolean.dag_ovre_toalett
+       to: 'off'
+     action:
+       - service: climate.set_temperature
+         data:
+           entity_id: climate.danfoss_z_thermostat_014g0013_heating_1_10
+           temperature: 16
+
+   - alias: 'SET NATT garage'
+     trigger:
+       platform: state
+       entity_id: input_boolean.dag_garage
+       to: 'off'
+     action:
+       - service: climate.set_temperature
+         data:
+           entity_id: climate.danfoss_z_thermostat_014g0013_heating_1_12
+           temperature: 8
+
+
+
+
+
+#******************************************************************
+#VÄDRA SOVRUM
+#******************************************************************
+   - alias: 'VÄDRA SOVRUM'
+     trigger:
+       platform: state
+       entity_id: binary_sensor.sovrumsfonster_open
+       to: 'on'
+     action:
+       service: climate.set_temperature
+       data:
+         entity_id: climate.danfoss_z_thermostat_014g0013_heating_1_7
+         temperature: 7 
+
+   - alias: 'SLUTA VÄDRA SOVRUM till dag'
+     trigger:
+       platform: state
+       entity_id: binary_sensor.sovrumsfonster_open
+       to: 'off'
+     condition:
+       condition: state
+       entity_id: input_boolean.dag_sovrum
+       state: 'on'
+     action:
+       service: climate.set_temperature
+       data:
+         entity_id: climate.danfoss_z_thermostat_014g0013_heating_1_7
+         temperature: 20 
+
+   - alias: 'SLUTA VÄDRA SOVRUM till natt'
+     trigger:
+       platform: state
+       entity_id: binary_sensor.sovrumsfonster_open
+       to: 'off'
+     condition:
+       condition: state
+       entity_id: input_boolean.dag_sovrum
+       state: 'off'
+     action:
+       service: climate.set_temperature
+       data:
+         entity_id: climate.danfoss_z_thermostat_014g0013_heating_1_7
+         temperature: 18 
+
+
+#******************************************************************
+#VERKSTÄLL VÄRME AV
+#******************************************************************
+   - alias: 'VÄRME AV'
+     trigger:
+       platform: state
+       entity_id: input_boolean.varme_av
+       to: 'on'
+     action:
+       - service: climate.set_temperature
+         data:
+           entity_id: climate.danfoss_z_thermostat_014g0013_heating_1
+           temperature: 8
+       - service: climate.set_temperature
+         data:
+           entity_id: climate.danfoss_z_thermostat_014g0013_heating_1_2
+           temperature: 8
+       - service: climate.set_temperature
+         data:
+           entity_id: climate.danfoss_z_thermostat_014g0013_heating_1_3
+           temperature: 8
+       - service: climate.set_temperature
+         data:
+           entity_id: climate.danfoss_z_thermostat_014g0013_heating_1_4
+           temperature: 8
+       - service: climate.set_temperature
+         data:
+           entity_id: climate.danfoss_z_thermostat_014g0013_heating_1_5
+           temperature: 8
+       - service: climate.set_temperature
+         data:
+           entity_id: climate.danfoss_z_thermostat_014g0013_heating_1_6
+           temperature: 8
+       - service: climate.set_temperature
+         data:
+           entity_id: climate.danfoss_z_thermostat_014g0013_heating_1_7
+           temperature: 8
+       - service: climate.set_temperature
+         data:
+           entity_id: climate.danfoss_z_thermostat_014g0013_heating_1_8
+           temperature: 8
+       - service: climate.set_temperature
+         data:
+           entity_id: climate.danfoss_z_thermostat_014g0013_heating_1_2
+           temperature: 8
+       - service: climate.set_temperature
+         data:
+           entity_id: climate.danfoss_z_thermostat_014g0013_heating_1_10
+           temperature: 8
+       - service: climate.set_temperature
+         data:
+           entity_id: climate.danfoss_z_thermostat_014g0013_heating_1_11
+           temperature: 8
+       - service: climate.set_temperature
+         data:
+           entity_id: climate.danfoss_z_thermostat_014g0013_heating_1_12
+           temperature: 8
+#       - service: homeassistant.turn_off
+#         entity_id: input_boolean.varme_av
+

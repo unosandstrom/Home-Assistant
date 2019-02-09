@@ -1,0 +1,34 @@
+
+   - alias: 'Autostarta tork'
+     trigger:
+       - platform: numeric_state
+         entity_id: sensor.vind_humidity
+         above: 77
+       - platform: numeric_state
+         entity_id: sensor.vind_temperature
+         above: 3
+     condition: 
+       - condition: numeric_state
+         entity_id: sensor.vind_temperature
+         above: 3
+       - condition: numeric_state
+         entity_id: sensor.vind_humidity
+         above: 77
+     action:
+       service: homeassistant.turn_on
+       entity_id: switch.fibaro_system_fgwpef_wall_plug_gen5_switch_4
+
+
+   - alias: 'Autostoppa tork'
+     trigger:
+       - platform: numeric_state
+         entity_id: sensor.vind_humidity
+         below: 72
+       - platform: numeric_state
+         entity_id: sensor.vind_temperature
+         below: 3
+     action:
+       service: homeassistant.turn_off
+       entity_id: switch.fibaro_system_fgwpef_wall_plug_gen5_switch_4
+
+

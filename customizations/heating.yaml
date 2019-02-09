@@ -1,0 +1,247 @@
+
+    input_boolean.varme_av:
+      assumed_state: false
+      friendly_name: Värme av
+      icon: mdi:close-circle
+
+    climate.danfoss_z_thermostat_014g0013_heating_1_8:
+      friendly_name: Arbetsrum
+      icon: mdi:radiator
+    climate.danfoss_z_thermostat_014g0013_heating_1_6:
+      friendly_name: Gästrum
+      icon: mdi:radiator
+    climate.danfoss_z_thermostat_014g0013_heating_1_4:
+      friendly_name: Övre hall
+      icon: mdi:radiator
+    climate.danfoss_z_thermostat_014g0013_heating_1_10:
+      friendly_name: Övre toalett
+      icon: mdi:radiator
+    climate.danfoss_z_thermostat_014g0013_heating_1_3:
+      friendly_name: Vardagsrum nedre
+      icon: mdi:radiator
+    climate.danfoss_z_thermostat_014g0013_heating_1:
+      friendly_name: Matrum
+      icon: mdi:radiator
+    climate.danfoss_z_thermostat_014g0013_heating_1_5:
+      friendly_name: Nedre hall
+      icon: mdi:radiator
+    climate.danfoss_z_thermostat_014g0013_heating_1_2:
+      friendly_name: Vardagsrum övre
+      icon: mdi:radiator
+    climate.danfoss_z_thermostat_014g0013_heating_1_9:
+      friendly_name: Gillestuga
+      icon: mdi:radiator
+    climate.danfoss_z_thermostat_014g0013_heating_1_7:
+      friendly_name: Sovrum
+      icon: mdi:radiator
+    climate.danfoss_z_thermostat_014g0013_heating_1_11:
+      friendly_name: Kök
+      icon: mdi:radiator
+    climate.danfoss_z_thermostat_014g0013_heating_1_12:
+      friendly_name: Garage
+      icon: mdi:radiator
+
+
+    input_boolean.dag_alla:
+      assumed_state: false
+      friendly_name: Alla
+      icon: mdi:close-circle
+
+    input_boolean.dag_v_ovre:
+      assumed_state: false
+      friendly_name: Vardagsrum övre (18-22)
+      icon: mdi:weather-sunny
+
+    input_boolean.dag_v_nedre:
+      assumed_state: false
+      friendly_name: Vardagsrum nedre (18-21)
+      icon: mdi:weather-sunny 
+
+    input_boolean.dag_gille:
+      assumed_state: false
+      friendly_name: Gillestuga....(16-18)
+      icon: mdi:weather-sunny
+
+    input_boolean.dag_matrum:
+      assumed_state: false
+      friendly_name: Matrum....(18-21)
+      icon: mdi:weather-sunny
+
+    input_boolean.dag_kok:
+      assumed_state: false
+      friendly_name: Kök....(18-21)
+      icon: mdi:weather-sunny
+
+    input_boolean.dag_sovrum:
+      assumed_state: false
+      friendly_name: Sovrum....(18-20)
+      icon: mdi:weather-sunny 
+
+    input_boolean.dag_gastrum:
+      assumed_state: false
+      friendly_name: Gästrum....(16-20)
+      icon: mdi:weather-sunny
+
+    input_boolean.dag_arbetsrum:
+      assumed_state: false
+      friendly_name: Arbetsrum....(16-20)
+      icon: mdi:weather-sunny
+
+    input_boolean.dag_hall:
+      assumed_state: false
+      friendly_name: Hall....(16-20)
+      icon: mdi:weather-sunny
+
+    input_boolean.dag_ovre_hall:
+      assumed_state: false
+      friendly_name: Övre hall....(16-20)
+      icon: mdi:weather-sunny
+
+    input_boolean.dag_ovre_toalett:
+      assumed_state: false
+      friendly_name: Övre toalett....(16-20)
+      icon: mdi:weather-sunny
+
+    input_boolean.dag_garage:
+      assumed_state: false
+      friendly_name: Garage....(08-12)
+      icon: mdi:weather-sunny
+
+
+
+    input_boolean.tidstyrning_alla:
+      assumed_state: false
+      friendly_name: Alla
+      icon: mdi:close-circle
+
+    input_boolean.tidstyrning_v_ovre:
+      assumed_state: false
+      friendly_name: Vardagsrum övre (06-23)
+      icon: mdi:calendar
+
+    input_boolean.tidstyrning_v_nedre:
+      assumed_state: false
+      friendly_name: Vardagsrum nedre (15-22)
+      icon: mdi:calendar 
+
+    input_boolean.tidstyrning_gille:
+      assumed_state: false
+      friendly_name: Gillestuga....(xx-20)
+      icon: mdi:calendar
+
+    input_boolean.tidstyrning_matrum:
+      assumed_state: false
+      friendly_name: Matrum....(06-18)
+      icon: mdi:calendar
+
+    input_boolean.tidstyrning_kok:
+      assumed_state: false
+      friendly_name: Kök....(06-18)
+      icon: mdi:calendar
+
+    input_boolean.tidstyrning_sovrum:
+      assumed_state: false
+      friendly_name: Sovrum....(22-24)
+      icon: mdi:calendar 
+
+    input_boolean.tidstyrning_gastrum:
+      assumed_state: false
+      friendly_name: Gästrum....(xx-21)
+      icon: mdi:calendar
+
+    input_boolean.tidstyrning_arbetsrum:
+      assumed_state: false
+      friendly_name: Arbetsrum....(06-21)
+      icon: mdi:calendar
+
+    input_boolean.tidstyrning_hall:
+      assumed_state: false
+      friendly_name: Hall....(06-18)
+      icon: mdi:calendar
+
+    input_boolean.tidstyrning_ovre_hall:
+      assumed_state: false
+      friendly_name: Övre hall....06-18)
+      icon: mdi:calendar
+
+    input_boolean.tidstyrning_ovre_toalett:
+      assumed_state: false
+      friendly_name: Övre toalett....(07-21)
+      icon: mdi:calendar
+
+    input_boolean.tidstyrning_garage:
+      assumed_state: false
+      friendly_name: Garage....(xx-18)
+      icon: mdi:calendar
+
+
+
+
+
+    input_boolean.boost_v_ovre:
+      assumed_state: false
+      friendly_name: Vardagsrum övre
+      icon: mdi:weather-sunny
+
+    input_boolean.boost_v_nedre:
+      assumed_state: false
+      friendly_name: Vardagsrum nedre
+      icon: mdi:weather-sunny 
+
+    input_boolean.boost_gille:
+      assumed_state: false
+      friendly_name: Gillestuga
+      icon: mdi:weather-sunny
+
+    input_boolean.boost_matrum:
+      assumed_state: false
+      friendly_name: Matrum
+      icon: mdi:weather-sunny
+
+    input_boolean.boost_kok:
+      assumed_state: false
+      friendly_name: Kök
+      icon: mdi:weather-sunny
+
+    input_boolean.boost_sovrum:
+      assumed_state: false
+      friendly_name: Sovrum
+      icon: mdi:weather-sunny 
+
+    input_boolean.boost_gastrum:
+      assumed_state: false
+      friendly_name: Gästrum
+      icon: mdi:weather-sunny
+
+    input_boolean.boost_arbetsrum:
+      assumed_state: false
+      friendly_name: Arbetsrum
+      icon: mdi:weather-sunny
+
+    input_boolean.boost_hall:
+      assumed_state: false
+      friendly_name: Hall
+      icon: mdi:weather-sunny
+
+    input_boolean.boost_ovre_hall:
+      assumed_state: false
+      friendly_name: Övre hall
+      icon: mdi:weather-sunny
+
+    input_boolean.boost_ovre_toalett:
+      assumed_state: false
+      friendly_name: Övre toalett
+      icon: mdi:weather-sunny
+
+    input_boolean.boost_garage:
+      assumed_state: false
+      friendly_name: Garage
+      icon: mdi:weather-sunny
+
+    input_boolean.boost_alla:
+      assumed_state: false
+      friendly_name: Alla
+      icon: mdi:close-circle
+
+
+

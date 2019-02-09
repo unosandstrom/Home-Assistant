@@ -1,0 +1,146 @@
+
+    sensor.sovrum_temperature:
+      friendly_name: Sovrum
+ 
+    sensor.sovrum_humidity:
+      friendly_name: Sovrum
+      icon: mdi:water
+
+    sensor.kladkammare_temperature:
+      friendly_name: Klädkammare
+ 
+    sensor.kladkammare_humidity:
+      friendly_name: Klädkammare
+      icon: mdi:water
+
+    sensor.pannrum_temperature:
+      friendly_name: Pannrum
+
+    sensor.pannrum_humidity:
+      friendly_name: Pannrum
+      icon: mdi:water
+
+    sensor.garage_temperature:
+      friendly_name: Garage
+
+    sensor.garage_humidity:
+      friendly_name: Garage
+      icon: mdi:water
+
+    sensor.gillestuga_temperature:
+      friendly_name: Gillestuga lägenhet
+
+    sensor.gillestuga_humidity:
+      friendly_name: Gillestuga lägenhet
+      icon: mdi:water
+
+    sensor.grund_1_temperature:
+      friendly_name: Grund sovrum
+
+    sensor.grund_1_humidity:
+      friendly_name: Grund sovrum
+      icon: mdi:water
+
+    sensor.sodervind_temperature:
+      friendly_name: Sidovind gästrum
+  
+    sensor.sodervind_humidity:
+      friendly_name: Sidovind gästrum
+      icon: mdi:water
+
+    sensor.arbetsrum_temperature:
+      friendly_name: Arbetsrum
+
+    sensor.arbetsrum_humidity:
+      friendly_name: Arbetsrum
+      icon: mdi:water
+
+    sensor.vardagsrum_temperature:
+      friendly_name: Vardagsrum
+
+    sensor.vardagsrum_humidity:
+      friendly_name: Vardagsrum
+      icon: mdi:water
+
+    sensor.tak_temperature:
+      friendly_name: Tak lägenhet
+
+    sensor.tak_humidity:
+      friendly_name: Tak lägenhet
+      icon: mdi:water
+
+    sensor.frys_1_temperature:
+      friendly_name: Frys kök
+ 
+    sensor.frys_1_humidity:
+      hidden: true
+
+    sensor.norrvind_temperature:
+      friendly_name: Sidovind arbetsrum
+
+    sensor.norrvind_humidity:
+      friendly_name: Sidovind arbetsrum
+      icon: mdi:water 
+
+    sensor.gastrum_temperature:
+      friendly_name: Gästrum
+
+    sensor.gastrum_humidity:
+      friendly_name: Gästrum
+      icon: mdi:water
+
+    sensor.kok_temperature:
+      friendly_name: Kök
+
+    sensor.kok_humidity:
+      friendly_name: Kök
+      icon: mdi:water
+
+    sensor.vind_temperature:
+      friendly_name: Vind
+
+    sensor.vind_humidity:
+      friendly_name: Vind
+      icon: mdi:water
+
+    sensor.lagenhet_temperature:
+      friendly_name: Kök Lägenhet
+
+    sensor.lagenhet_humidity:
+      friendly_name: Kök Lägenhet
+      icon: mdi:water
+
+    sensor.frys_2_temperature:
+      friendly_name: Frys lägenhet
+
+    sensor.frys_2_humidity:
+      hidden: true
+
+    sensor.toalett_temperature:
+      friendly_name: Toalett lägenhet
+
+    sensor.toalett_humidity:
+      friendly_name: Toalett lägenhet
+      icon: mdi:water
+
+    sensor.baksida_temperature:
+      friendly_name: Baksidan
+
+    sensor.baksida_humidity:
+      friendly_name: Baksidan
+      icon: mdi:water
+
+    sensor.framsida_temperature:
+      friendly_name: Framsidan
+
+    sensor.framsida_humidity:
+      friendly_name: Framsidan
+      icon: mdi:water
+
+
+
+
+
+ 
+
+

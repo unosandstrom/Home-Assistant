@@ -1,0 +1,88 @@
+#*************
+    switch.fibaro_system_fgwpef_wall_plug_gen5_switch_4:
+      assumed_state: false
+      friendly_name: Tork
+
+    switch.fibaro_system_fgwpef_wall_plug_gen5_switch_2:
+      assumed_state: false
+      friendly_name: TV
+
+#******
+    input_boolean.lampor_offon:
+      assumed_state: false
+      friendly_name: Lampor off - on
+      icon: mdi:lightbulb
+#******
+    switch.hornlampa:
+      assumed_state: false
+      friendly_name: Hörnlampa vardagsrum övre
+
+    switch.klotlampa:
+      assumed_state: false
+      friendly_name: Klotlampa vardagsrum övre
+
+    switch.keramiklampa:
+      assumed_state: false
+      friendly_name: Golvlampa vardagsrum nedre
+
+    switch.stapellampa_1:
+      assumed_state: false
+      friendly_name: Vägglampa vardagsrum övre
+
+    switch.stapellampa_2:
+      assumed_state: false
+      friendly_name: Hörnlampa vardagsrum nedre
+
+    switch.barlampa:
+      assumed_state: false
+      friendly_name: Barskåpslampa vardagsrum övre
+
+    switch.snacklampa:
+      assumed_state: false
+      friendly_name: Bordslampa städskåp 
+
+    switch.golvlampa:
+      assumed_state: false
+      friendly_name: Golvlampa vardagsrum övre
+      icon: mdi:lightbulb
+
+    light.golvlampa_dimmer:
+      assumed_state: false
+      friendly_name: Alla + dimmer
+
+    switch.fibaro_system_fgs223_double_relay_switch_2:
+      assumed_state: false
+      friendly_name: Fönsterpendlar vardagsrum nedre
+
+    switch.fibaro_system_fgs223_double_relay_switch:
+      assumed_state: false
+      friendly_name: Altanlampor
+#******
+    input_boolean.fonsterlampor:
+      friendly_name: fönsterlampor
+      assumed_state: false
+#******
+    switch.matrumslampa:
+      assumed_state: false
+      friendly_name: Fönsterlampa matrum
+
+    switch.kokslampa:
+      assumed_state: false
+      friendly_name: Fönsterlampa kök
+
+    switch.gastrumslampa:
+      assumed_state: false
+      friendly_name: Fönsterlampa gästrum
+
+    switch.hallampa:
+      assumed_state: false
+      friendly_name: Vägglampa hall
+
+    switch.gillelampa:
+      assumed_state: false
+      friendly_name: Bordslampa gillestuga
+
+    switch.sovrumslampor:
+      assumed_state: false
+      friendly_name: Sovrumslampor
+ 

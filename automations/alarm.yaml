@@ -1,0 +1,132 @@
+
+   - alias: 'LARM FRYS kök'
+     trigger:
+       platform: numeric_state
+       entity_id: sensor.frys_1_temperature
+       above: -10
+       for:
+         hours: 0
+         minutes: 10
+         seconds: 0
+     action:
+       - service: homeassistant.turn_on
+         entity_id: group.larm
+#       - service: ifttt.trigger
+#         data: {"event":"Huslarm", "value1":"Frys kök"}
+
+   - alias: 'LARM FRYS lägenhet'
+     trigger:
+       platform: numeric_state
+       entity_id: sensor.frys_2_temperature
+       above: -10
+       for:
+         hours: 0
+         minutes: 10
+         seconds: 0
+     action:
+       - service: homeassistant.turn_on
+         entity_id: group.larm
+#       - service: ifttt.trigger
+#         data: {"event":"Huslarm", "value1":"Frys lägenhet"}
+
+   - alias: 'LARM VIND'
+     trigger:
+       - platform: numeric_state
+         entity_id: sensor.vind_humidity
+         above: 80
+     action:
+       - service: homeassistant.turn_on
+         entity_id: group.larm
+#       - service: ifttt.trigger
+#         data: {"event":"Huslarm", "value1":"Fukt vinden"}
+ 
+
+   - alias: 'LARM FUKT'
+     trigger:
+       - platform: numeric_state
+         entity_id: sensor.norrvind_humidity
+         above: 82
+       - platform: numeric_state
+         entity_id: sensor.sodervind_humidity
+         above: 82
+       - platform: numeric_state
+         entity_id: sensor.grund_1_humidity
+         above: 82
+       - platform: numeric_state
+         entity_id: sensor.gillestuga_humidity
+         above: 60
+       - platform: numeric_state
+         entity_id: sensor.lagenhet_humidity
+         above: 70
+       - platform: numeric_state
+         entity_id: sensor.sovrum_humidity
+         above: 60
+       - platform: numeric_state
+         entity_id: sensor.vardagsrum_humidity
+         above: 60
+       - platform: numeric_state
+         entity_id: sensor.arbetsrum_humidity
+         above: 60
+       - platform: numeric_state
+         entity_id: sensor.gastrum_humidity
+         above: 60
+       - platform: numeric_state
+         entity_id: sensor.toalett_humidity
+         above: 60
+       - platform: numeric_state
+         entity_id: sensor.kok_humidity
+         above: 60
+       - platform: numeric_state
+         entity_id: sensor.pannrum_humidity
+         above: 60
+       - platform: numeric_state
+         entity_id: sensor.tak_humidity
+         above: 90
+       - platform: numeric_state
+         entity_id: sensor.garage_humidity
+         above: 96
+     action:
+       - service: homeassistant.turn_on
+         entity_id: group.larm
+#       - service: ifttt.trigger
+#         data: {"event":"Huslarm", "value1":"Fukt hus"}
+
+   - alias: 'LARM VARMT'
+     trigger:
+       - platform: numeric_state
+         entity_id: sensor.vardagsrum_temperature
+         above: 23
+       - platform: numeric_state
+         entity_id: sensor.gillestuga_temperature
+         above: 23
+       - platform: numeric_state
+         entity_id: sensor.kok_temperature
+         above: 23
+       - platform: numeric_state
+         entity_id: sensor.sovrum_temperature
+         above: 23
+       - platform: numeric_state
+         entity_id: sensor.gastrum_temperature
+         above: 23
+       - platform: numeric_state
+         entity_id: sensor.arbetsrum_temperature
+         above: 23
+       - platform: numeric_state
+         entity_id: sensor.lagenhet_temperature
+         above: 23
+       - platform: numeric_state
+         entity_id: sensor.toalett_temperature
+         above: 23
+       - platform: numeric_state
+         entity_id: sensor.pannrum_temperature
+         above: 30
+       - platform: numeric_state
+         entity_id: sensor.garage_temperature
+         above: 16
+     action:
+       - service: homeassistant.turn_on
+         entity_id: group.larm
+#       - service: ifttt.trigger
+#         data: {"event":"Huslarm", "value1":"Varmt"}
+
+

@@ -1,0 +1,89 @@
+
+   - alias: 'TÄND LAMPORNA AUTOMATISKT'
+     trigger:
+       - platform: numeric_state
+         entity_id: sensor.solarradiation
+         below: 30
+       - platform: time
+         at: '07:50:00'
+     condition:
+       condition: and
+       conditions:
+         - condition: numeric_state
+           entity_id: sensor.solarradiation
+           below: 29
+         - condition: time
+           after: '07:49:00'
+     action:
+       - service: homeassistant.turn_on
+         entity_id: input_boolean.lampor
+
+
+   - alias: 'SLÄCK LAMPORNA AUTOMATISKT'
+     trigger:
+       - platform: numeric_state
+         entity_id: sensor.solarradiation
+         above: 30
+       - platform: time
+         at: '01:00:00'
+     action:
+       - service: homeassistant.turn_off
+         entity_id: input_boolean.lampor
+
+
+
+   - alias: 'TÄND LAMPORNA MANUELLT'
+     trigger:
+       - platform: state
+         entity_id: light.golvlampa_dimmer
+         to: 'on'
+     action:
+       - service: homeassistant.turn_on
+         entity_id: input_boolean.lampor
+
+
+   - alias: 'SLÄCK LAMPORNA MANUELLT'
+     trigger:
+       - platform: state
+         entity_id: light.golvlampa_dimmer
+         to: 'off'
+     action:
+       - service: homeassistant.turn_off
+         entity_id: input_boolean.lampor
+
+
+   
+   - alias: 'VERKSTÄLL PÅ'
+     trigger:
+       - platform: state
+         entity_id: input_boolean.lampor
+         to: 'on'
+     action:
+       - service: homeassistant.turn_on
+         entity_id: group.inomhuslampor
+       - service: homeassistant.turn_on
+         entity_id: group.utomhuslampor
+       - service: homeassistant.turn_on
+         entity_id: group.fonsterlampor
+       - service: light.turn_on
+         data:
+           entity_id: light.golvlampa_dimmer
+           brightness: 25
+
+   - alias: 'VERKSTÄLL AV'
+     trigger:
+       - platform: state
+         entity_id: input_boolean.lampor
+         to: 'off'
+     action:
+       - service: homeassistant.turn_off
+         entity_id: group.inomhuslampor
+       - service: homeassistant.turn_off
+         entity_id: group.utomhuslampor
+       - service: homeassistant.turn_off
+         entity_id: group.fonsterlampor
+       - service: light.turn_off
+         entity_id: light.golvlampa_dimmer
+
+
+

@@ -1,0 +1,516 @@
+homeassistant:
+  name: Home
+  latitude: 57.719134
+  longitude: 11.649671
+  elevation: 15
+  unit_system: metric  
+  time_zone: Europe/Stockholm
+  customize: !include_dir_merge_named customizations
+
+
+config:
+frontend:
+# updater:
+# discovery:
+conversation:
+history:
+logbook:
+sun:
+
+
+ffmpeg:
+  ffmpeg_bin: /usr/bin/ffmpeg
+
+camera:
+  platform: ffmpeg
+  name: kamera_dorr
+  input: http://xxxx:xxxxxxx@xxxxxxxxxxvideo/mjpg.cgi
+
+zwave:
+  usb_path: /dev/ttyACM0
+  config_path: /srv/homeassistant/lib/python3.5/site-packages/python_openzwave/ozw_config
+
+climate:
+  platform: zwave
+
+google:
+  client_id: xxxxx.apps.googleusercontent.com
+  client_secret: xxxxxxxxx
+
+
+rfxtrx:
+  device: /dev/serial/by-id/usb-RFXCOM_RFXtrx433_A120OMQ4-if00-port0
+
+cover:
+  platform: rfxtrx
+  devices:
+    071a030001010101:
+      name: markis
+
+switch:
+  platform: rfxtrx
+  automatic_add: False
+  signal_repetitions: 2
+  devices:
+    0b11001700ed623e01010f80:
+      name: hornlampa
+    0b11001700ed623e02010f80:
+      name: klotlampa
+    0b11001700ed623e03010f80:
+      name: keramiklampa
+    0b11001700ed623e04010f80:
+      name: stapellampa_1
+    0b11001700ed623e05010f80:
+      name: stapellampa_2
+    0b11001700ed623e06010f80:
+      name: barlampa
+    0b11001700ed623e07010f80:
+      name: gillelampa
+    0b11001700ed623e08010f80:
+      name: tv_offon
+    0b11001700ed623e09010f80:
+      name: matrumslampa
+    0b11001700ed623e0a010f80:
+      name: snacklampa
+    0b11001700ed623e0b010f80:
+      name: hallampa
+    0b11001700ed623e0c010f80:
+      name: kokslampa
+    0b11001700ed623e0d010f80:
+      name: gastrumslampa
+    0b11001700ed623e0e010f80:
+      name: sovrumslampor
+
+switch 2:
+  platform: command_line
+  switches:
+    tvljud_1_lower_higher:
+      command_on: "ssh uno@192.168.1.248 amixer -D pulse sset Master 5%+"
+      command_off: "ssh uno@192.168.1.248 amixer -D pulse sset Master 5%-"
+    tvljud_1_mute_unmute:
+      command_on: "ssh uno@192.168.1.248 amixer -D pulse sset Master unmute"
+      command_off: "ssh uno@192.168.1.248 amixer -D pulse sset Master mute"
+    tvljud_2_lower_higher:
+      command_on: "ssh uno@192.168.1.181 amixer -D pulse sset Master 5%+"
+      command_off: "ssh uno@192.168.1.181 amixer -D pulse sset Master 5%-"
+    tvljud_2_mute_unmute:
+      command_on: "ssh uno@192.168.1.181 amixer -D pulse sset Master unmute"
+      command_off: "ssh uno@192.168.1.181 amixer -D pulse sset Master mute"
+    dorrvideototv:
+      command_on: "ssh uno@xxxxx DISPLAY=:0 vlc -f http://xxxx:xxxs@1xxxxx/video/mjpg.cgi"
+    dorrvideotolaptop:
+      command_on: "ssh uno@1xxxxxx DISPLAY=:0 ./Video/door.sh"
+
+light:
+  platform: rfxtrx
+  devices:
+     0b11009800e58e5201010f70:
+       name: golvlampa_dimmer
+
+binary_sensor:
+  - platform: rfxtrx
+    automatic_add: False
+    devices:
+       0b11000c0187df1e01040f70:
+         name: doorbell2
+         fire_event: true
+       0b11000c019095f201040f70:
+         name: doorbell1
+         fire_event: true
+       0b1100d8019133d20a010f60:
+         name: sovrumsfonster_open
+       0b110007002377f210010f70:
+         name: motionsensor1
+         fire_event: true
+
+  - platform: ffmpeg_motion
+    name: kamera_nagonpadorren
+    input: http://xxxx:xxxx@xxxxxxx/video/mjpg.cgi
+    reset: 5
+    initial_state: true
+
+  - platform: template
+    sensors:
+      front_door:
+        friendly_name: "Ytterdörr"
+        device_class: door
+        value_template: "{{ is_state('sensor.aeotec_zw120_door_window_sensor_gen5_access_control', '22') }}"
+
+sensor:
+  platform: rfxtrx
+  automatic_add: False
+  devices:
+    0a5207112f0e00d2390189:
+      name: vardagsrum
+      data_type:
+       - Humidity
+       - Temperature
+    0a5207372c0e00d7260289:
+      name: gillestuga
+      data_type:
+       - Humidity
+       - Temperature
+    0a520904970000ea2c0169:
+      name: kok
+      data_type:
+       - Humidity
+       - Temperature
+    0a52090887000087300169:
+      name: lagenhet
+      data_type:
+       - Humidity
+       - Temperature
+    0a5201edba0400d82e0169:
+      name: toalett
+      data_type:
+       - Humidity
+       - Temperature
+    0a52010cf20200c4590389:
+      name: baksida
+      data_type:
+       - Humidity
+       - Temperature
+    0a520105f4010058330079:
+      name: framsida
+      data_type:
+       - Humidity
+       - Temperature
+    0850070b980080e869:
+      name: frys_1
+      data_type:
+       - Humidity
+       - Temperature
+    0850070a880080b969:
+      name: frys_2
+      data_type:
+       - Humidity
+       - Temperature
+    0a5207282e0e00cf220289:
+      name: vind
+      data_type:
+       - Humidity
+       - Temperature
+    0a520723310e00d21f0289:
+      name: sodervind
+      data_type:
+       - Humidity
+       - Temperature
+    0a52071b3f0e00da200289:
+      name: norrvind
+      data_type:
+       - Humidity
+       - Temperature
+    0a5207082a0e00de240289:
+      name: grund_1
+      data_type:
+       - Humidity
+       - Temperature
+    0a520705290e010e2d0179:
+      name: tak
+      data_type:
+       - Humidity
+       - Temperature
+    0a520720230e00e0220269:
+      name: gastrum
+      data_type:
+       - Humidity
+       - Temperature
+    0a52075e3a0e0116300179:
+      name: arbetsrum
+      data_type:
+       - Humidity
+       - Temperature
+    0a52074d330e00d82a0179:
+      name: garage
+      data_type:
+       - Humidity
+       - Temperature
+    0a520702210e00ef4e0379: 
+      name: pannrum
+      data_type:
+       - Humidity 
+       - Temperature
+    0a520753340e00c53b0179:
+      name: sovrum
+      data_type:
+       - Humidity 
+       - Temperature
+    0a52075a3c0e00c7370179:
+      name: kladkammare
+      data_type:
+       - Humidity 
+       - Temperature
+
+
+
+sensor 1:
+   platform: template
+   sensors:
+     unos:
+       value_template: '{{ states.calendar.unosandstromgmailcom.attributes.message | round(4)}}'
+     utid:
+       value_template: '{{ states.calendar.unosandstromgmailcom.attributes.start_time }}'
+     ams:
+       value_template: '{{ states.calendar.annmariesandstrom1gmailcom.attributes.message }}'
+     atid:
+       value_template: '{{ states.calendar.annmariesandstrom1gmailcom.attributes.start_time }}'
+     veckonummer:
+       value_template: "{{ now().strftime('%V') }}"
+
+sensor 2:
+  - platform: time_date
+    display_options:
+      - 'date'
+
+sensor 3:
+  - platform: template
+    sensors:
+      bat_vardagsrum_ovre:
+        value_template: '{% if states.zwave.danfoss_z_thermostat_014g0013_2 %}
+          {{ states.zwave.danfoss_z_thermostat_014g0013_2.attributes.battery_level }}
+        {% else %}
+          n/a
+        {% endif %}'
+        friendly_name: 'Vardagsrum övre'
+        unit_of_measurement: '%'
+        entity_id: zwave.danfoss_z_thermostat_014g0013_2
+
+      bat_vardagsrum_nedre:
+        value_template: '{% if states.zwave.danfoss_z_thermostat_014g0013_3 %}
+          {{ states.zwave.danfoss_z_thermostat_014g0013_3.attributes.battery_level }}
+        {% else %}
+          n/a
+        {% endif %}'
+        friendly_name: 'Vardagsrum nedre'
+        unit_of_measurement: '%'
+        entity_id: zwave.danfoss_z_thermostat_014g0013_3
+
+      bat_gillestuga:
+        value_template: '{% if states.zwave.danfoss_z_thermostat_014g0013_9 %}
+          {{ states.zwave.danfoss_z_thermostat_014g0013_9.attributes.battery_level }}
+        {% else %}
+          n/a
+        {% endif %}'
+        friendly_name: 'Gillestuga'
+        unit_of_measurement: '%'
+        entity_id: zwave.danfoss_z_thermostat_014g0013_9
+
+      bat_matrum:
+        value_template: '{% if states.zwave.danfoss_z_thermostat_014g0013 %}
+          {{ states.zwave.danfoss_z_thermostat_014g0013.attributes.battery_level }}
+        {% else %}
+          n/a
+        {% endif %}'
+        friendly_name: 'Matrum'
+        unit_of_measurement: '%'
+        entity_id: zwave.danfoss_z_thermostat_014g0013
+
+      bat_kok:
+        value_template: '{% if states.zwave.danfoss_z_thermostat_014g0013_11 %}
+          {{ states.zwave.danfoss_z_thermostat_014g0013_11.attributes.battery_level }}
+        {% else %}
+          n/a
+        {% endif %}'
+        friendly_name: 'Kök'
+        unit_of_measurement: '%'
+        entity_id: zwave.danfoss_z_thermostat_014g0013_11
+
+      bat_sovrum:
+        value_template: '{% if states.zwave.danfoss_z_thermostat_014g0013_7 %}
+          {{ states.zwave.danfoss_z_thermostat_014g0013_7.attributes.battery_level }}
+        {% else %}
+          n/a
+        {% endif %}'
+        friendly_name: 'Sovrum'
+        unit_of_measurement: '%'
+        entity_id: zwave.danfoss_z_thermostat_014g0013_7
+
+      bat_gastrum:
+        value_template: '{% if states.zwave.danfoss_z_thermostat_014g0013_6 %}
+          {{ states.zwave.danfoss_z_thermostat_014g0013_6.attributes.battery_level }}
+        {% else %}
+          n/a
+        {% endif %}'
+        friendly_name: 'Gästrum'
+        unit_of_measurement: '%'
+        entity_id: zwave.danfoss_z_thermostat_014g0013_6
+
+      bat_arbetsrum:
+        value_template: '{% if states.zwave.danfoss_z_thermostat_014g0013_8 %}
+          {{ states.zwave.danfoss_z_thermostat_014g0013_8.attributes.battery_level }}
+        {% else %}
+          n/a
+        {% endif %}'
+        friendly_name: 'Arbetsrum'
+        unit_of_measurement: '%'
+        entity_id: zwave.danfoss_z_thermostat_014g0013_8
+
+      bat_hall:
+        value_template: '{% if states.zwave.danfoss_z_thermostat_014g0013_5 %}
+          {{ states.zwave.danfoss_z_thermostat_014g0013_5.attributes.battery_level }}
+        {% else %}
+          n/a
+        {% endif %}'
+        friendly_name: 'Nedre hall'
+        unit_of_measurement: '%'
+        entity_id: zwave.danfoss_z_thermostat_014g0013_5
+
+      bat_ovre_hall:
+        value_template: '{% if states.zwave.danfoss_z_thermostat_014g0013_4 %}
+          {{ states.zwave.danfoss_z_thermostat_014g0013_4.attributes.battery_level }}
+        {% else %}
+          n/a
+        {% endif %}'
+        friendly_name: 'Övre hall'
+        unit_of_measurement: '%'
+        entity_id: zwave.danfoss_z_thermostat_014g0013_4
+
+      bat_ovre_toalett:
+        value_template: '{% if states.zwave.danfoss_z_thermostat_014g0013_10 %}
+          {{ states.zwave.danfoss_z_thermostat_014g0013_10.attributes.battery_level }}
+        {% else %}
+          n/a
+        {% endif %}'
+        friendly_name: 'Övre toalett'
+        unit_of_measurement: '%'
+        entity_id: zwave.danfoss_z_thermostat_014g0013_10
+
+      bat_garage:
+        value_template: '{% if states.zwave.danfoss_z_thermostat_014g0013_12 %}
+          {{ states.zwave.danfoss_z_thermostat_014g0013_12.attributes.battery_level }}
+        {% else %}
+          n/a
+        {% endif %}'
+        friendly_name: 'Garage'
+        unit_of_measurement: '%'
+        entity_id: zwave.danfoss_z_thermostat_014g0013_12
+
+      bat_smoke:
+        value_template: '{% if states.zwave.fibaro_system_fgsd002_smoke_sensor %}
+          {{ states.zwave.fibaro_system_fgsd002_smoke_sensor.attributes.battery_level }}
+        {% else %}
+          n/a
+        {% endif %}'
+        friendly_name: 'Brandvarnare'
+        unit_of_measurement: '%'
+        entity_id: zwave.fibaro_system_fgsd002_smoke_sensor
+
+sensor 4:
+  - platform: scrape
+    name: temperatur_ovs
+    resource: http://www.o-vader.se/mobil.php
+    select: "td:nth-of-type(6)"
+    scan_interval: 360
+  - platform: scrape
+    name: medelvind_ovs
+    resource: http://www.o-vader.se/mobil.php
+    select: "td:nth-of-type(16)"
+    scan_interval: 360
+  - platform: scrape
+    name: byvind_ovs
+    resource: http://www.o-vader.se/mobil.php
+    select: "td:nth-of-type(18)"
+    scan_interval: 360
+  - platform: scrape
+    name: vindriktning
+    resource: http://www.o-vader.se/mobil.php
+    select: "td:nth-of-type(22)"
+    scan_interval: 360
+  - platform: scrape
+    name: regn_ovs
+    resource: http://www.o-vader.se/mobil.php
+    select: "td:nth-of-type(12)"
+    scan_interval: 360
+  - platform: scrape
+    name: soltimmar_ovs
+    resource: http://www.o-vader.se/mobil.php
+    select: "td:nth-of-type(24)"
+    scan_interval: 360
+  - platform: scrape
+    name: solarradiation_ovs
+    resource: http://www.o-vader.se/mobil.php
+    select: "td:nth-of-type(26)"
+    scan_interval: 360
+
+sensor 5:
+  platform: template
+  sensors:
+    temperatur:
+      value_template: "{{ states.sensor.temperatur_ovs.state | replace('°C','') | float }}"
+      unit_of_measurement: '°C'
+    medelvind:
+      value_template: "{{ states.sensor.medelvind_ovs.state | replace('m/sek','') | float }}"
+      unit_of_measurement: 'm/s'
+    byvind:
+      value_template: "{{ states.sensor.byvind_ovs.state | replace('m/sek','') | float }}"
+      unit_of_measurement: 'm/s'
+    regn: 
+      value_template: "{{ states.sensor.regn_ovs.state | replace('mm','') | float }}"
+      unit_of_measurement: 'mm'
+    soltimmar:
+      value_template: "{{ states.sensor.soltimmar_ovs.state | replace('Tim','') | float }}"
+      unit_of_measurement: 'tim'
+    solarradiation:
+      value_template: "{{ states.sensor.solarradiation_ovs.state | replace('W/m2','') | float }}"
+      unit_of_measurement: 'W/m2' 
+
+input_boolean:
+  nagoninsidadorr:
+  filminspelning:
+  kamera_restart_minne:
+  kolladorren_tv:
+  kolladorren_laptop:
+  dorrklocka:
+  haftbesok:
+  lampor:
+  lampor_offon:
+  varme_av:
+  boost_alla:
+  boost_v_ovre:
+  boost_v_nedre:
+  boost_gille:
+  boost_matrum:
+  boost_kok:
+  boost_sovrum:
+  boost_gastrum:
+  boost_arbetsrum:
+  boost_hall:
+  boost_ovre_hall:
+  boost_ovre_toalett:
+  boost_garage:
+
+  dag_tidstyrning:
+
+  tidstyrning_alla: 
+  tidstyrning_v_ovre:
+  tidstyrning_v_nedre:
+  tidstyrning_gille:
+  tidstyrning_matrum:
+  tidstyrning_kok:
+  tidstyrning_sovrum:
+  tidstyrning_gastrum:
+  tidstyrning_arbetsrum:
+  tidstyrning_hall:
+  tidstyrning_ovre_hall:
+  tidstyrning_ovre_toalett:
+  tidstyrning_garage:
+
+  dag_alla:
+  dag_v_ovre:
+  dag_v_nedre:
+  dag_gille:
+  dag_matrum:
+  dag_kok:
+  dag_sovrum:
+  dag_gastrum:
+  dag_arbetsrum:
+  dag_hall:
+  dag_ovre_hall:
+  dag_ovre_toalett:
+  dag_garage:
+
+
+#script: !include_dir_merge_named scripts
+group: !include_dir_merge_named groups
+automation: !include_dir_merge_list automations
+

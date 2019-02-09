@@ -1,0 +1,11 @@
+
+    group.almanacka:
+      order: 1
+    group.testar:
+      order: 2 
+    group.temperaturer:
+      order: 3
+    group.ute:
+      order: 4
+    group.smhi:
+      order: 5

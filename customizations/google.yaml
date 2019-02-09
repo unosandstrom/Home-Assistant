@@ -1,0 +1,28 @@
+    sensor.date:
+      friendly_name: Idag
+      icon: mdi:clock
+
+    sensor.veckonummer:
+      friendly_name: 'Vecka'
+      icon: mdi:inget
+
+    sensor.utid:
+      friendly_name: 'Uno'
+      icon: mdi:calendar
+
+    sensor.unos:
+      friendly_name: '-'
+      icon: mdi:inget
+
+    sensor.atid:
+      friendly_name: 'Ann-Marie'
+      icon: mdi:calendar
+
+    sensor.ams:
+      friendly_name: '-'
+      icon: mdi:inget
+
+    sensor.jarls:
+      friendly_name: 'Vädret idag '
+      icon: mdi:minus
+

@@ -1,0 +1,150 @@
+
+   - alias: 'HA_Start'
+     trigger:
+       platform: homeassistant
+       event: start
+     action:
+       service: light.turn_off
+       entity_id: light.golvlampa_dimmer
+
+
+   - alias: "update sensors"
+     trigger:
+       platform: time
+       at: '12:00:00'
+     action:
+       service: homeassistant.update_entity
+       entity_id: 
+         sensor.veckonummer
+
+
+   - alias: 'ffmpeg restart'
+     trigger:
+       platform: time
+       minutes: '/10'
+       seconds: 00
+     condition:
+       condition: state
+       entity_id: input_boolean.filminspelning   
+       state: 'off'
+     action:
+       - service: ffmpeg.restart
+         entity_id: binary_sensor.kamera_nagonpadorren 
+#       - delay: 
+#           seconds: 10
+#       - service: ffmpeg.start
+#         entity_id: binary_sensor.kamera_nagonpadorren  
+       - service: homeassistant.turn_on
+         entity_id: input_boolean.kamera_restart_minne
+
+
+   - alias: 'TV manuell dörrfilmning'
+     trigger:
+       platform: state
+       entity_id: input_boolean.kolladorren_tv
+       to: 'on'
+     action:
+       - service: homeassistant.turn_on
+         entity_id: switch.dorrvideototv
+       - service: homeassistant.turn_off
+         entity_id: input_boolean.kolladorren_tv
+
+
+   - alias: 'Laptop manuell dörrfilminspelning'
+     trigger:
+       platform: state
+       entity_id: input_boolean.kolladorren_laptop
+       to: 'on'
+     action:
+       - service: homeassistant.turn_on
+         entity_id: switch.dorrvideotolaptop
+       - service: homeassistant.turn_off
+         entity_id: input_boolean.kolladorren_laptop
+
+
+
+   - alias: 'rörelsesenor innanför ytterdörren'
+     trigger:
+       platform: event
+       event_type: button_pressed
+       event_data: {"entity_id": "binary_sensor.motionsensor1"}
+     action:
+       - service: homeassistant.turn_on
+         entity_id: input_boolean.nagoninsidadorr
+       - delay: 
+           seconds: 60
+       - service: homeassistant.turn_off
+         entity_id: input_boolean.nagoninsidadorr   
+
+
+   - alias: 'Dörrvakt'
+     trigger:
+       - platform: event
+         event_type: button_pressed
+         event_data: {"entity_id": "binary_sensor.doorbell1"}
+       - platform: event
+         event_type: button_pressed
+         event_data: {"entity_id": "binary_sensor.doorbell2"}
+       - platform: state
+         entity_id: binary_sensor.aeotec_zw120_door_window_sensor_gen5_sensor
+         to: 'on'
+       - platform: state
+         entity_id: binary_sensor.kamera_nagonpadorren
+         to: 'on'
+     condition:
+       - condition: state
+         entity_id: input_boolean.filminspelning   
+         state: 'off'
+       - condition: state
+         entity_id: input_boolean.nagoninsidadorr
+         state: 'off'       
+     action:
+       - service: homeassistant.turn_on
+         entity_id: switch.aeotec_zw080_siren_gen5_switch
+       - service: homeassistant.turn_on
+         entity_id: input_boolean.filminspelning
+       - service: homeassistant.turn_on
+         entity_id: input_boolean.haftbesok 
+       - delay: 
+           seconds: 4
+       - service: homeassistant.turn_off
+         entity_id: switch.aeotec_zw080_siren_gen5_switch
+ 
+
+
+   - alias: 'filma'
+     trigger:
+       platform: state
+       entity_id: input_boolean.filminspelning
+       to: 'on'
+     action:
+       - service: homeassistant.turn_on
+         entity_id: switch.dorrvideotolaptop
+       - service: homeassistant.turn_on
+         entity_id: switch.dorrvideototv
+       - service: homeassistant.turn_off
+         entity_id: switch.tvljud_1_mute_unmute
+       - delay: 
+           seconds: 4
+       - service: homeassistant.turn_on
+         entity_id: switch.tvljud_1_mute_unmute
+       - delay: 
+           seconds: 60
+       - service: homeassistant.turn_off
+         entity_id: input_boolean.filminspelning
+
+
+
+
+   - alias: 'kaffe'
+     trigger:
+       platform: state
+       entity_id: switch.fibaro_system_fgwpef_wall_plug_gen5_switch_3
+       to: 'on'
+       for:
+          hours: 0
+          minutes: 30
+          seconds: 0
+     action:
+       service: switch.turn_off
+       entity_id: switch.fibaro_system_fgwpef_wall_plug_gen5_switch_3

@@ -1,0 +1,413 @@
+
+  almanacka:
+    name: almanacka
+    view: no
+    entities:
+      - sensor.date
+      - sensor.veckonummer 
+      - sensor.utid
+      - sensor.unos
+      - sensor.atid
+      - sensor.ams
+
+  manover:
+    name: manover
+    control: hidden
+    view: no
+    entities:
+      - light.golvlampa_dimmer
+      - switch.fibaro_system_fgwpef_wall_plug_gen5_switch_2
+      - input_boolean.haftbesok
+      - cover.markis
+
+  temperaturer:
+    name: temperaturer
+    view: no
+    entities: 
+      - sensor.frys_1_temperature
+      - sensor.frys_2_temperature
+      - sensor.vardagsrum_temperature
+      - sensor.sovrum_temperature
+
+  smhi:
+    name: smhi
+    view: no
+    entities: 
+      - weather.smhi_hemma
+
+  ute:
+    name: ute
+    view: no
+    entities:
+      - sensor.temperatur
+      - sensor.baksida_temperature
+      - sensor.framsida_temperature
+      - sensor.medelvind
+      - sensor.byvind
+      - sensor.vindriktning
+      - sensor.regn
+      - sensor.soltimmar
+      - sensor.solarradiation
+      - sun.sun
+
+  boost:
+    name: "boost"
+    control: hidden
+    entities: 
+      - input_boolean.boost_alla
+      - input_boolean.boost_v_ovre
+      - input_boolean.boost_v_nedre
+      - input_boolean.boost_gille
+      - input_boolean.boost_matrum
+      - input_boolean.boost_kok
+      - input_boolean.boost_sovrum
+      - input_boolean.boost_gastrum
+      - input_boolean.boost_arbetsrum
+      - input_boolean.boost_hall
+      - input_boolean.boost_ovre_hall
+      - input_boolean.boost_ovre_toalett
+      - input_boolean.boost_garage
+
+  tidstyrning:
+    name: "tidstyrning"
+    control: hidden
+    entities: 
+      - input_boolean.tidstyrning_alla
+      - input_boolean.tidstyrning_v_ovre
+      - input_boolean.tidstyrning_v_nedre
+      - input_boolean.tidstyrning_gille
+      - input_boolean.tidstyrning_matrum
+      - input_boolean.tidstyrning_kok
+      - input_boolean.tidstyrning_sovrum
+      - input_boolean.tidstyrning_gastrum
+      - input_boolean.tidstyrning_arbetsrum
+      - input_boolean.tidstyrning_hall
+      - input_boolean.tidstyrning_ovre_hall
+      - input_boolean.tidstyrning_ovre_toalett
+      - input_boolean.tidstyrning_garage
+
+  dagtemperatur:
+    name: "dagtemperatur"
+    control: hidden
+    entities: 
+      - input_boolean.dag_alla
+      - input_boolean.dag_v_ovre
+      - input_boolean.dag_v_nedre
+      - input_boolean.dag_gille
+      - input_boolean.dag_matrum
+      - input_boolean.dag_kok
+      - input_boolean.dag_sovrum
+      - input_boolean.dag_gastrum
+      - input_boolean.dag_arbetsrum
+      - input_boolean.dag_hall
+      - input_boolean.dag_ovre_hall
+      - input_boolean.dag_ovre_toalett
+      - input_boolean.dag_garage
+
+  element:
+    name: "element"
+    entities:
+      - input_boolean.varme_av
+      - climate.danfoss_z_thermostat_014g0013_heating_1_2
+      - climate.danfoss_z_thermostat_014g0013_heating_1_3
+      - climate.danfoss_z_thermostat_014g0013_heating_1_9
+      - climate.danfoss_z_thermostat_014g0013_heating_1
+      - climate.danfoss_z_thermostat_014g0013_heating_1_11
+      - climate.danfoss_z_thermostat_014g0013_heating_1_7
+      - climate.danfoss_z_thermostat_014g0013_heating_1_6
+      - climate.danfoss_z_thermostat_014g0013_heating_1_8
+      - climate.danfoss_z_thermostat_014g0013_heating_1_5
+      - climate.danfoss_z_thermostat_014g0013_heating_1_4
+      - climate.danfoss_z_thermostat_014g0013_heating_1_10
+      - climate.danfoss_z_thermostat_014g0013_heating_1_12
+
+  rumstemperaturer:
+    entities:
+      - sensor.vardagsrum_temperature
+      - sensor.sovrum_temperature
+      - sensor.gillestuga_temperature
+      - sensor.kok_temperature
+      - sensor.gastrum_temperature
+      - sensor.arbetsrum_temperature
+      - sensor.kladkammare_temperature
+      - sensor.garage_temperature
+      - sensor.pannrum_temperature
+      - sensor.lagenhet_temperature
+      - sensor.toalett_temperature
+
+  inomhuslampor:
+    entities:
+      - switch.golvlampa    
+      - switch.hornlampa
+      - switch.klotlampa
+      - switch.stapellampa_1
+      - switch.keramiklampa
+      - switch.stapellampa_2
+      - switch.fibaro_system_fgs223_double_relay_switch_2
+      - switch.snacklampa
+
+  fonsterlampor:
+    entities:
+      - switch.hallampa
+      - switch.barlampa
+      - switch.matrumslampa
+      - switch.kokslampa
+      - switch.gastrumslampa
+      - switch.gillelampa
+      - switch.sovrumslampor
+
+  utomhuslampor:
+    entities:
+      - switch.fibaro_system_fgs223_double_relay_switch
+
+  inomhus:
+    entities:
+      - sensor.vardagsrum_humidity
+      - sensor.sovrum_humidity
+      - sensor.gillestuga_humidity
+      - sensor.kok_humidity
+      - sensor.gastrum_humidity
+      - sensor.arbetsrum_humidity
+      - sensor.lagenhet_humidity
+      - sensor.kladkammare_humidity
+      - sensor.toalett_humidity
+      - sensor.garage_humidity
+      - sensor.pannrum_humidity
+
+  wallplug_larm:
+    entities:
+      - switch.fibaro_system_fgwpef_wall_plug_gen5_switch
+      - sensor.fibaro_system_fgwpef_wall_plug_gen5_alarm_type
+      - sensor.fibaro_system_fgwpef_wall_plug_gen5_alarm_level
+      - sensor.fibaro_system_fgwpef_wall_plug_gen5_energy
+      - sensor.fibaro_system_fgwpef_wall_plug_gen5_exporting
+      - sensor.fibaro_system_fgwpef_wall_plug_gen5_power
+      - sensor.fibaro_system_fgwpef_wall_plug_gen5_power_2
+      - sensor.fibaro_system_fgwpef_wall_plug_gen5_power_management
+      - sensor.fibaro_system_fgwpef_wall_plug_gen5_sourcenodeid
+
+  wallplug_tv:
+    entities:
+      - switch.fibaro_system_fgwpef_wall_plug_gen5_switch_2
+      - sensor.fibaro_system_fgwpef_wall_plug_gen5_alarm_type_2
+      - sensor.fibaro_system_fgwpef_wall_plug_gen5_alarm_level_2
+      - sensor.fibaro_system_fgwpef_wall_plug_gen5_energy_2
+      - sensor.fibaro_system_fgwpef_wall_plug_gen5_exporting_2
+      - sensor.fibaro_system_fgwpef_wall_plug_gen5_power_3
+      - sensor.fibaro_system_fgwpef_wall_plug_gen5_power_4
+      - sensor.fibaro_system_fgwpef_wall_plug_gen5_power_management_2
+      - sensor.fibaro_system_fgwpef_wall_plug_gen5_sourcenodeid_2
+
+  wallplug_kaffe:
+    entities:
+      - switch.fibaro_system_fgwpef_wall_plug_gen5_switch_3
+      - sensor.fibaro_system_fgwpef_wall_plug_gen5_alarm_type_3
+      - sensor.fibaro_system_fgwpef_wall_plug_gen5_alarm_level_3
+      - sensor.fibaro_system_fgwpef_wall_plug_gen5_energy_3
+      - sensor.fibaro_system_fgwpef_wall_plug_gen5_exporting_3
+      - sensor.fibaro_system_fgwpef_wall_plug_gen5_power_5
+      - sensor.fibaro_system_fgwpef_wall_plug_gen5_power_6
+      - sensor.fibaro_system_fgwpef_wall_plug_gen5_power_management_3
+      - sensor.fibaro_system_fgwpef_wall_plug_gen5_sourcenodeid_3
+
+  wallplug_tork:
+    entities:
+      - switch.fibaro_system_fgwpef_wall_plug_gen5_switch_4
+      - sensor.fibaro_system_fgwpef_wall_plug_gen5_alarm_type_4
+      - sensor.fibaro_system_fgwpef_wall_plug_gen5_alarm_level_4
+      - sensor.fibaro_system_fgwpef_wall_plug_gen5_energy_4
+      - sensor.fibaro_system_fgwpef_wall_plug_gen5_exporting_4
+      - sensor.fibaro_system_fgwpef_wall_plug_gen5_power_7
+      - sensor.fibaro_system_fgwpef_wall_plug_gen5_power_8
+      - sensor.fibaro_system_fgwpef_wall_plug_gen5_power_management_4
+      - sensor.fibaro_system_fgwpef_wall_plug_gen5_sourcenodeid_4
+
+  switch_fonster_altanlampor:
+    control: hidden
+    entities:
+      - switch.fibaro_system_fgs223_double_relay_switch
+      - switch.fibaro_system_fgs223_double_relay_switch_2
+      - sensor.fibaro_system_fgs223_double_relay_alarm_level
+      - sensor.fibaro_system_fgs223_double_relay_alarm_type
+      - sensor.fibaro_system_fgs223_double_relay_energy
+      - sensor.fibaro_system_fgs223_double_relay_energy_2
+      - sensor.fibaro_system_fgs223_double_relay_exporting
+      - sensor.fibaro_system_fgs223_double_relay_exporting_2
+      - sensor.fibaro_system_fgs223_double_relay_heat
+      - sensor.fibaro_system_fgs223_double_relay_power
+      - sensor.fibaro_system_fgs223_double_relay_power_2
+      - sensor.fibaro_system_fgs223_double_relay_power_management
+      - sensor.fibaro_system_fgs223_double_relay_sourcenodeid
+      - sensor.fibaro_system_fgs223_double_relay_unknown
+      - sensor.fibaro_system_fgs223_double_relay_interval
+      - sensor.fibaro_system_fgs223_double_relay_previous_reading
+  brandvarnare:
+    entities:
+      - binary_sensor.fibaro_system_fgsd002_smoke_sensor_sensor
+      - sensor.fibaro_system_fgsd002_smoke_sensor_alarm_level
+      - sensor.fibaro_system_fgsd002_smoke_sensor_alarm_type
+      - sensor.fibaro_system_fgsd002_smoke_sensor_burglar
+      - sensor.fibaro_system_fgsd002_smoke_sensor_general
+      - sensor.fibaro_system_fgsd002_smoke_sensor_heat
+      - sensor.fibaro_system_fgsd002_smoke_sensor_heat_2
+      - sensor.fibaro_system_fgsd002_smoke_sensor_power_management
+      - sensor.fibaro_system_fgsd002_smoke_sensor_smoke
+      - sensor.fibaro_system_fgsd002_smoke_sensor_smoke_2
+      - sensor.fibaro_system_fgsd002_smoke_sensor_sourcenodeid
+      - sensor.fibaro_system_fgsd002_smoke_sensor_system
+      - sensor.fibaro_system_fgsd002_smoke_sensor_temperature    
+
+  dorrvakt1:
+    entities:
+      - binary_sensor.aeotec_zw120_door_window_sensor_gen5_sensor
+      - sensor.aeotec_zw120_door_window_sensor_gen5_sourcenodeid
+      - sensor.aeotec_zw120_door_window_sensor_gen5_burglar
+      - sensor.aeotec_zw120_door_window_sensor_gen5_alarm_type
+      - sensor.aeotec_zw120_door_window_sensor_gen5_alarm_level
+      - sensor.aeotec_zw120_door_window_sensor_gen5_access_control
+
+
+  byggnad:
+    control: hidden
+    entities:
+      - switch.fibaro_system_fgwpef_wall_plug_gen5_switch_4
+      - automation.autostarta_tork
+      - sensor.vind_humidity
+      - sensor.norrvind_humidity
+      - sensor.sodervind_humidity
+      - sensor.grund_1_humidity
+      - sensor.tak_humidity
+      - sensor.vind_temperature
+      - sensor.norrvind_temperature
+      - sensor.sodervind_temperature
+      - sensor.grund_1_temperature
+      - sensor.tak_temperature
+      - sensor.pannrum_temperature
+
+  utomhus:
+    entities:
+      - sensor.framsida_humidity
+      - sensor.baksida_humidity
+      - sensor.framsida_temperature
+      - sensor.baksida_temperature
+
+  volym:
+    name: "volym"
+    control: hidden
+    entities:
+      - switch.tvljud_1_lower_higher
+      - switch.tvljud_1_mute_unmute
+      - switch.tvljud_2_lower_higher
+      - switch.tvljud_2_mute_unmute
+
+  batterier:
+    entities:
+      - sensor.bat_vardagsrum_ovre
+      - sensor.bat_vardagsrum_nedre
+      - sensor.bat_gillestuga
+      - sensor.bat_matrum
+      - sensor.bat_kok
+      - sensor.bat_sovrum
+      - sensor.bat_gastrum
+      - sensor.bat_arbetsrum
+      - sensor.bat_hall
+      - sensor.bat_ovre_hall
+      - sensor.bat_ovre_toalett
+      - sensor.bat_garage
+      - sensor.bat_smoke
+
+  larm:
+    control: hidden
+    entities:
+      - switch.fibaro_system_fgwpef_wall_plug_gen5_switch   
+
+  div: 
+    control: hidden
+    entities: 
+      - binary_sensor.kamera_nagonpadorren
+      - input_boolean.kolladorren_tv
+      - input_boolean.kolladorren_laptop
+      - input_boolean.kamera_restart_minne
+      - input_boolean.nagoninsidadorr
+      - switch.aeotec_zw080_siren_gen5_switch
+      - input_boolean.filminspelning
+      - switch.dorrvideotolaptop
+      - input_boolean.haftbesok 
+      - switch.dorrvideototv
+      - switch.tvljud_1_mute_unmute
+
+  kamera_dorr:
+    control: hidden
+    entities:
+      - camera.kamera_dorr
+
+###########################################################
+
+  maintab:
+    name: huvudsidan
+    view: yes
+    entities:
+      - group.almanacka
+      - group.manover
+      - group.temperaturer
+      - group.ute
+      - group.smhi
+      - group.kamera_dorr
+
+  housetab:
+    name: huskollen
+    view: yes
+    entities:
+      - group.byggnad
+      - group.inomhus
+      - group.utomhus
+  
+  lamptab:
+    name: lamporna
+    view: yes
+    entities:
+      - group.inomhuslampor
+      - group.fonsterlampor
+      - group.utomhuslampor
+
+  heattab:
+    name: värmen
+    view: yes
+    entities:
+      - group.boost
+      - group.tidstyrning
+      - group.dagtemperatur
+      - group.element
+      - group.rumstemperaturer
+
+  multimediatab:
+    name: multimedian
+    view: yes
+    entities:
+      - group.volym
+
+  info:
+    name: infon
+    view: yes
+    entities:
+      - group.wallplug_tork
+      - group.wallplug_tv
+      - group.wallplug_kaffe
+      - group.wallplug_larm
+      - group.switch_fonster_altanlampor
+      - group.brandvarnare
+      - group.dorrvakt1
+
+  battery:
+    name: batterierna
+    view: yes
+    entities:
+      - group.batterier
+
+  diverse:
+    name: diversen
+    view: yes
+    entities:
+      - group.nagon
+      - group.div
+

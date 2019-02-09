@@ -1,0 +1,30 @@
+
+    sensor.temperatur:
+      friendly_name: Temperatur
+      icon: mdi:thermometer
+
+    sensor.medelvind:
+      friendly_name: Medelvind
+      icon: mdi:weather-windy
+
+    sensor.byvind:
+      friendly_name: Byvind
+      icon: mdi:weather-windy
+
+    sensor.vindriktning:
+      friendly_name: Vindriktning
+      icon: mdi:compass-outline
+    
+    sensor.regn:
+      friendly_name: Regn
+      icon: mdi:weather-pouring
+
+    sensor.soltimmar:
+      friendly_name: Soltimmar
+      icon: mdi:weather-sunny
+
+    sensor.solarradiation:
+      friendly_name: Solstrålning
+      icon: mdi:weather-sunny
+
+

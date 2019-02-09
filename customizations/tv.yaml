@@ -1,0 +1,26 @@
+
+    switch.tv_offon:
+      assumed_state: false
+      friendly_name: TV
+      icon: mdi:monitor
+
+    switch.tvljud_1_lower_higher:
+      assumed_state: true
+      friendly_name: STORA  Sänk - Höj
+      icon: mdi:volume-high
+
+    switch.tvljud_2_lower_higher:
+      assumed_state: true
+      friendly_name: LILLA  Sänk - Höj
+      icon: mdi:volume-high
+
+    switch.tvljud_1_mute_unmute:
+      assumed_state: false
+      friendly_name: STORA  Av - På
+      icon: mdi:volume-off
+
+    switch.tvljud_2_mute_unmute:
+      assumed_state: false
+      friendly_name: LILLA  Av - På
+      icon: mdi:volume-off
+
